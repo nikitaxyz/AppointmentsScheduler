@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<?import javafx.scene.control.RadioButton?>
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="930.0" spacing="10.0" xmlns:fx="http://javafx.com/fxml" fx:controller="xyz.bubblesort.software2wgu.controllers.AppointmentsController">
+    <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+        <Label alignment="CENTER" style="-fx-font-weight: bold;" text="Appointments" />
+        <RadioButton fx:id="radioAll" mnemonicParsing="false" onAction="#onRadioClick" text="All">
+            <HBox.margin>
+                <Insets left="20.0"/>
+            </HBox.margin>
+        </RadioButton>
+        <RadioButton fx:id="radioWeek" mnemonicParsing="false" onAction="#onRadioClick" text="Week">
+            <HBox.margin>
+                <Insets left="20.0"/>
+            </HBox.margin>
+        </RadioButton>
+        <RadioButton fx:id="radioMonth" mnemonicParsing="false" onAction="#onRadioClick" text="Month">
+            <HBox.margin>
+                <Insets left="20.0"/>
+            </HBox.margin>
+        </RadioButton>
+    </HBox>
+     <TableView fx:id="table">
+         <columns>
+             <TableColumn fx:id="appIDColumn" prefWidth="75.0" text="ID" />
+             <TableColumn fx:id="appTitleColumn" prefWidth="75.0" text="Title" />
+             <TableColumn fx:id="appDescriptionColumn" prefWidth="75.0" text="Description" />
+             <TableColumn fx:id="appLocationColumn" prefWidth="75.0" text="Location" />
+             <TableColumn fx:id="appContactColumn" prefWidth="75.0" text="Contact" />
+             <TableColumn fx:id="appTypeColumn" prefWidth="75.0" text="Type" />
+             <TableColumn fx:id="appStartDateColumn" prefWidth="75.0" text="Start Date" />
+             <TableColumn fx:id="appStartTimeColumn" prefWidth="75.0" text="Start Time" />
+             <TableColumn fx:id="appEndDateColumn" prefWidth="75.0" text="End Date" />
+             <TableColumn fx:id="appEndTimeColumn" prefWidth="75.0" text="End Time" />
+             <TableColumn fx:id="appCustomerIDColumn" prefWidth="75.0" text="Customer ID" />
+             <TableColumn fx:id="appUserIDColumn" prefWidth="75.0" text="User ID" />
+         </columns>
+     </TableView>
+    <HBox spacing="10.0">
+        <Button mnemonicParsing="false" onAction="#onAdd" text="Add New" />
+        <Button mnemonicParsing="false" onAction="#onModify" text="Modify" />
+        <Button mnemonicParsing="false" onAction="#onDelete" text="Delete" />
+        <Button mnemonicParsing="false" onAction="#onTypeAndMonthReport" text="Type and Month Report" />
+        <Button mnemonicParsing="false" onAction="#onContactsReport" text="Contacts Report" />
+        <Button mnemonicParsing="false" onAction="#onCustomersReport" text="Customers Report" />
+        <Button mnemonicParsing="false" onAction="#onBack" text="Back to Customers View" />
+    </HBox>
+    <HBox>
+        <GridPane fx:id="form" disable="true" hgap="20.0" vgap="20.0" prefWidth="500">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <Label text="Title" />
+            <TextField fx:id="titleField" GridPane.columnIndex="1" />
+            <Label text="ID" GridPane.columnIndex="2" />
+            <Label text="Description" GridPane.rowIndex="1" />
+            <Label text="Type" GridPane.rowIndex="2" />
+            <Label text="Location" GridPane.rowIndex="5" />
+            <Label text="Start Date" GridPane.rowIndex="3" />
+            <ComboBox fx:id="customerComboBox" promptText="Customer ID" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+            <ComboBox fx:id="userComboBox" prefWidth="150.0" promptText="User ID" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+            <Button mnemonicParsing="false" onAction="#appOnCancel" text="Cancel" GridPane.rowIndex="6" />
+            <Button mnemonicParsing="false" onAction="#appOnSave" text="Save" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <TextField fx:id="idField" disable="true" prefHeight="24.0" prefWidth="104.0" GridPane.columnIndex="3" />
+            <TextField fx:id="descriptionField" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="1" />
+            <TextField fx:id="typeField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="locationField" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <Label text="Contact" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <ComboBox fx:id="contactComboBox" prefWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+            <DatePicker fx:id="startDatePicker" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Label text="Start Time" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+            <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="3">
+                <TextField fx:id="startTimeFieldH" />
+                <Label text=":" />
+                <TextField fx:id="startTimeFieldM" />
+                <ChoiceBox fx:id="startTimeComboBox" prefWidth="150.0" />
+            </HBox>
+            <Label text="End Date" GridPane.rowIndex="4" />
+            <DatePicker fx:id="endDatePicker" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Label text="End Time" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+            <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="4">
+                <TextField fx:id="endTimeFieldH" />
+                <Label text=":" />
+                <TextField fx:id="endTimeFieldM" />
+                <ChoiceBox fx:id="endTimeComboBox" prefWidth="150.0" />
+            </HBox>
+        </GridPane>
+        <Label fx:id="output"  wrapText="true" maxWidth="200">
+            <HBox.margin>
+                <Insets left="50.0" />
+            </HBox.margin>
+        </Label>
+    </HBox>
+   <padding>
+      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+   </padding>
+</VBox>
